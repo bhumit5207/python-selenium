@@ -3,26 +3,156 @@
 <head>
     <meta charset="UTF-8" />
     <title>Dropdown, Checkbox, Radio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        label {
+            display: block;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 15px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        label:hover {
+            color: #667eea;
+            padding-left: 5px;
+        }
+        input[type="checkbox"],
+        input[type="radio"] {
+            cursor: pointer;
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+            transition: all 0.3s ease;
+        }
+        input[type="checkbox"]:hover,
+        input[type="radio"]:hover {
+            transform: scale(1.1);
+        }
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 1.5em;
+            padding-right: 2.5em;
+        }
+        select:hover {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+        }
+        #selectedValue,
+        #checkboxResult,
+        #radioResult {
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+            color: #333;
+            font-weight: 500;
+            animation: slideIn 0.3s ease;
+            min-height: 24px;
+        }
+        #selectedValue {
+            border-left-color: #667eea;
+        }
+        #checkboxResult {
+            border-left-color: #ff9800;
+        }
+        #radioResult {
+            border-left-color: #2196f3;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Dropdown and Selection Elements</h1>
-    <label for="dropdown">Choose an option:</label>
-    <select id="dropdown" onchange="document.getElementById('selectedValue').innerText = this.value;">
-        <option value="Option 1">Option 1</option>
-        <option value="Option 2">Option 2</option>
-        <option value="Option 3">Option 3</option>
-    </select>
-    <div id="selectedValue" style="margin-top: 10px;">Option 1</div>
+    <div class="container">
+        <h1>Dropdown and Selection Elements</h1>
+        
+        <div class="section">
+            <label for="dropdown">Choose an option:</label>
+            <select id="dropdown" onchange="document.getElementById('selectedValue').innerText = this.value;">
+                <option value="Option 1">Option 1</option>
+                <option value="Option 2">Option 2</option>
+                <option value="Option 3">Option 3</option>
+            </select>
+            <div id="selectedValue">Option 1</div>
+        </div>
 
-    <h2>Checkbox Example</h2>
-    <label><input type="checkbox" id="checkboxOne" onchange="updateCheckbox()" /> Checkbox 1</label>
-    <label><input type="checkbox" id="checkboxTwo" onchange="updateCheckbox()" /> Checkbox 2</label>
-    <div id="checkboxResult" style="margin-top: 10px;"></div>
+        <h2>Checkbox Example</h2>
+        <div class="section">
+            <label><input type="checkbox" id="checkboxOne" onchange="updateCheckbox()" /> Checkbox 1</label>
+            <label><input type="checkbox" id="checkboxTwo" onchange="updateCheckbox()" /> Checkbox 2</label>
+            <div id="checkboxResult">No checkboxes selected</div>
+        </div>
 
-    <h2>Radio Example</h2>
-    <label><input type="radio" name="radioGroup" id="radioOption1" value="Radio 1" onchange="updateRadio()" /> Radio 1</label>
-    <label><input type="radio" name="radioGroup" id="radioOption2" value="Radio 2" onchange="updateRadio()" /> Radio 2</label>
-    <div id="radioResult" style="margin-top: 10px;"></div>
+        <h2>Radio Example</h2>
+        <div class="section">
+            <label><input type="radio" name="radioGroup" id="radioOption1" value="Radio 1" onchange="updateRadio()" /> Radio 1</label>
+            <label><input type="radio" name="radioGroup" id="radioOption2" value="Radio 2" onchange="updateRadio()" /> Radio 2</label>
+            <div id="radioResult">No radio selected</div>
+        </div>
+    </div>
 
     <script>
         function updateCheckbox() {

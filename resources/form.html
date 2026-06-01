@@ -3,21 +3,126 @@
 <head>
     <meta charset="UTF-8" />
     <title>Form Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+        form {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        input:focus ~ label,
+        textarea:focus ~ label {
+            color: #667eea;
+        }
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        input:hover,
+        textarea:hover {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        #formSubmitMessage {
+            margin-top: 20px;
+            padding: 16px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-left: 4px solid #4caf50;
+            border-radius: 4px;
+            font-weight: 500;
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Form Submission</h1>
     <form id="sampleForm" onsubmit="return submitForm();">
+        <h1>Form Submission</h1>
         <label for="firstName">First Name</label>
-        <input id="firstName" type="text" />
+        <input id="firstName" type="text" placeholder="Enter your first name" />
         <label for="lastName">Last Name</label>
-        <input id="lastName" type="text" />
+        <input id="lastName" type="text" placeholder="Enter your last name" />
         <label for="email">Email</label>
-        <input id="email" type="email" />
+        <input id="email" type="email" placeholder="Enter your email" />
         <label for="comments">Comments</label>
-        <textarea id="comments"></textarea>
+        <textarea id="comments" placeholder="Enter your comments" rows="4"></textarea>
         <button type="submit">Submit</button>
+        <div id="formSubmitMessage"></div>
     </form>
-    <div id="formSubmitMessage" style="margin-top: 16px; color: blue;"></div>
     <script>
         function submitForm() {
             var first = document.getElementById('firstName').value;

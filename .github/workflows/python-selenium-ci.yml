@@ -28,6 +28,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Show selected browser
+        run: |
+          echo "Running tests on browser: ${{ matrix.browser }}"
+
       - name: Run Pytest
         run: |
           pytest -n auto --browser ${{ matrix.browser }} --headless

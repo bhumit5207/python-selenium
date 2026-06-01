@@ -14,6 +14,7 @@ pytest_html = None
 def pytest_addoption(parser):
     parser.addoption('--browser', action='store', default=None, help='Browser to use for tests: chrome, firefox, edge')
     parser.addoption('--headless', action='store_true', default=False, help='Run browser in headless mode')
+    parser.addoption('--headed', action='store_true', default=False, help='Run browser in headed mode (default is headed)')
     parser.addoption('--url', action='store', default=None, help='Base URL or local resource folder path')
     parser.addoption('--env', action='store', default=None, help='Environment name for config overrides')
 
@@ -22,6 +23,7 @@ def pytest_addoption(parser):
 def config(request):
     browser_override = request.config.getoption('--browser')
     headless_override = request.config.getoption('--headless')
+    headed_override = request.config.getoption('--headed')
     url_override = request.config.getoption('--url')
     env_override = request.config.getoption('--env')
 
@@ -32,6 +34,8 @@ def config(request):
         config['browser'] = browser_override
     if headless_override:
         config['headless'] = True
+    if headed_override:
+        config['headless'] = False
     if url_override:
         config['base_url'] = url_override
     if env_override:
@@ -54,6 +58,7 @@ def logger(config):
 def driver(request, config, logger):
     browser = config['browser']
     headless = config['headless']
+    
     timeout = config['timeout']
     download_dir = config['download_dir']
 
@@ -113,6 +118,7 @@ def pytest_runtest_makereport(item, call):
 def pytest_configure(config):
     global pytest_html
     pytest_html = config.pluginmanager.getplugin('html')
+
     reports_path = ROOT_DIR / 'reports'
     if not reports_path.exists():
         os.makedirs(reports_path)
