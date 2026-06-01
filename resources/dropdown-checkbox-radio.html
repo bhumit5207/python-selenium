@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Dropdown, Checkbox, Radio</title>
+</head>
+<body>
+    <h1>Dropdown and Selection Elements</h1>
+    <label for="dropdown">Choose an option:</label>
+    <select id="dropdown" onchange="document.getElementById('selectedValue').innerText = this.value;">
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+        <option value="Option 3">Option 3</option>
+    </select>
+    <div id="selectedValue" style="margin-top: 10px;">Option 1</div>
+
+    <h2>Checkbox Example</h2>
+    <label><input type="checkbox" id="checkboxOne" onchange="updateCheckbox()" /> Checkbox 1</label>
+    <label><input type="checkbox" id="checkboxTwo" onchange="updateCheckbox()" /> Checkbox 2</label>
+    <div id="checkboxResult" style="margin-top: 10px;"></div>
+
+    <h2>Radio Example</h2>
+    <label><input type="radio" name="radioGroup" id="radioOption1" value="Radio 1" onchange="updateRadio()" /> Radio 1</label>
+    <label><input type="radio" name="radioGroup" id="radioOption2" value="Radio 2" onchange="updateRadio()" /> Radio 2</label>
+    <div id="radioResult" style="margin-top: 10px;"></div>
+
+    <script>
+        function updateCheckbox() {
+            var checked = [];
+            if (document.getElementById('checkboxOne').checked) checked.push('Checkbox 1');
+            if (document.getElementById('checkboxTwo').checked) checked.push('Checkbox 2');
+            document.getElementById('checkboxResult').innerText = checked.length ? checked.join(', ') : 'No checkboxes selected';
+        }
+
+        function updateRadio() {
+            var selected = document.querySelector('input[name="radioGroup"]:checked');
+            document.getElementById('radioResult').innerText = selected ? selected.value + ' selected' : 'No radio selected';
+        }
+    </script>
+</body>
+</html>

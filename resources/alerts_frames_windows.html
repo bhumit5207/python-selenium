@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Alerts, Frames & Windows</title>
+</head>
+<body>
+    <h1>Alert, Frame & Window Examples</h1>
+    <button id="jsAlert" onclick="alert('This is an alert!')">Trigger Alert</button>
+    <button id="jsConfirm" onclick="confirm('Confirm this action?') ? showResult('Confirmed') : showResult('Cancelled')">Trigger Confirm</button>
+    <button id="jsPrompt" onclick="prompt('Enter your name:') ? showResult('Prompt accepted') : showResult('Prompt dismissed')">Trigger Prompt</button>
+    <div id="alertResult" style="margin-top: 16px;"></div>
+
+    <h2>Frame Example</h2>
+    <iframe id="sampleFrame" src="frame_content.html" width="500" height="150"></iframe>
+
+    <h2>Window and Tab Example</h2>
+    <button id="newWindow" onclick="window.open('window_result.html', '_blank')">Open New Window</button>
+    <button id="newTab" onclick="window.open('window_result.html', '_blank')">Open New Tab</button>
+</body>
+<script>
+    function showResult(message) {
+        document.getElementById('alertResult').innerText = message;
+    }
+</script>
+</html>

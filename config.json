@@ -1,0 +1,10 @@
+{
+  "base_url": "resources",
+  "timeout": 15,
+  "headless": true,
+  "browser": "chrome",
+  "window_size": "1920,1080",
+  "download_dir": "downloads",
+  "report_dir": "reports",
+  "log_level": "INFO"
+}

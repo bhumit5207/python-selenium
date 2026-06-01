@@ -1,0 +1,17 @@
+{
+  "login": {
+    "username": "admin",
+    "password": "password123"
+  },
+  "form": {
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "email": "jane.doe@example.com",
+    "comments": "This is a sample automation test submission."
+  },
+  "dropdown": "Option 2",
+  "api": {
+    "base_url": "https://jsonplaceholder.typicode.com",
+    "resource": "/posts/1"
+  }
+}

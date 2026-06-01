@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Login Page</title>
+</head>
+<body>
+    <h1>Login Page</h1>
+    <form id="loginForm" onsubmit="return showSuccess();">
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" />
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" />
+        <button type="submit">Login</button>
+    </form>
+    <div id="loginSuccess" style="margin-top: 16px; color: green;"></div>
+    <script>
+        function showSuccess() {
+            var username = document.getElementById('username').value;
+            document.getElementById('loginSuccess').innerText = 'Login successful for ' + username;
+            return false;
+        }
+    </script>
+</body>
+</html>

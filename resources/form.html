@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Form Page</title>
+</head>
+<body>
+    <h1>Form Submission</h1>
+    <form id="sampleForm" onsubmit="return submitForm();">
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" />
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" />
+        <label for="email">Email</label>
+        <input id="email" type="email" />
+        <label for="comments">Comments</label>
+        <textarea id="comments"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="formSubmitMessage" style="margin-top: 16px; color: blue;"></div>
+    <script>
+        function submitForm() {
+            var first = document.getElementById('firstName').value;
+            document.getElementById('formSubmitMessage').innerText = 'Form submitted: ' + first;
+            return false;
+        }
+    </script>
+</body>
+</html>

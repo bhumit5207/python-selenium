@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Drag and Drop</title>
+    <style>
+        #dragSource { width: 150px; height: 150px; background: #67c0ff; cursor: grab; margin-bottom: 20px; }
+        #dropTarget { width: 200px; height: 200px; background: #e0e0e0; border: 2px dashed #333; display: flex; align-items: center; justify-content: center; }
+    </style>
+</head>
+<body>
+    <h1>Drag and Drop</h1>
+    <div id="dragSource" draggable="true">Drag me</div>
+    <div id="dropTarget">Drop here</div>
+    <div id="dragStatus" style="margin-top: 16px; color: green;"></div>
+    <script>
+        var source = document.getElementById('dragSource');
+        var target = document.getElementById('dropTarget');
+        source.addEventListener('dragstart', function (e) { e.dataTransfer.setData('text/plain', 'dragged'); });
+        target.addEventListener('dragover', function (e) { e.preventDefault(); });
+        target.addEventListener('drop', function (e) {
+            e.preventDefault();
+            document.getElementById('dragStatus').innerText = 'Dropped successfully';
+        });
+    </script>
+</body>
+</html>
