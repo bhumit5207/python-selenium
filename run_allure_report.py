@@ -28,7 +28,12 @@ def generate_allure_report(allure_path: str) -> int:
 
 def open_allure_report(allure_path: str) -> int:
     command = [allure_path, 'open', str(ALLURE_REPORT)]
-    return subprocess.run(command, cwd=ROOT_DIR, shell=False).returncode
+    try:
+        subprocess.Popen(command, cwd=ROOT_DIR, shell=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        return 0
+    except Exception as exc:
+        print(f'Failed to launch Allure report server: {exc}')
+        return 1
 
 
 if __name__ == '__main__':
